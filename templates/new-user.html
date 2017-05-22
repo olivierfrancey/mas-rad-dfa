@@ -1,0 +1,112 @@
+<main class="container">
+    <div class="row ce-login">
+        <div class="col-md-6">
+            <div class="ce-svg-green"></div>
+        </div>
+        <div class="col-md-4">
+            <h1>ENREGISTREMENT</h1>
+            <form>
+                <div class="form-group has-success has-feedback">
+                    <label for="last-name" >Nom</label>
+                    <input 
+                        required
+                        type="text" 
+                        name="last-name" 
+                        class="form-control" 
+                        ng-model="s.user.lastname"
+                        ng-change="s.checkLastname(s.user.lastname)"
+                        value="{{ s.user.lastname }}">
+                    <span 
+                    class="glyphicon glyphicon-ok form-control-feedback"
+                    ng-if="s.check.lastname"
+                    ></span>
+                </div>
+                <div class="form-group has-success has-feedback">
+                    <label for="first-name" >Prénom</label>
+                    <input 
+                        required
+                        type="text" 
+                        name="first-name" 
+                        class="form-control" 
+                        ng-model="s.user.firstname"
+                        ng-change="s.checkFirstname(s.user.firstname)"
+                        value="{{ s.user.firstname }}">
+                    <span 
+                    class="glyphicon glyphicon-ok form-control-feedback"
+                    ng-if="s.check.firstname"
+                    ></span>
+                </div>
+                <div class="form-group has-success has-feedback">
+                    <label for="phone" >Téléphone (optionnel)</label>
+                    <input 
+                        type="text" 
+                        name="phone" 
+                        class="form-control" 
+                        ng-model="s.user.phone"
+                        ng-change="s.checkPhone(s.user.phone)"
+                        value="{{ s.user.phone }}">
+                    <span 
+                    class="glyphicon glyphicon-ok form-control-feedback"
+                    ng-if="s.check.email"
+                    ></span>
+                </div>
+                <div class="form-group has-success has-feedback">
+                    <label for="name" >Username</label>
+                    <input 
+                        required
+                        type="text" 
+                        name="name" 
+                        class="form-control" 
+                        ng-model="s.user.name"
+                        ng-change="s.checkName(s.user.name)"
+                        value="{{ s.user.name }}">
+                    <small>25 chars max, must contain only comma-separated alphanumeric chars, e.g. foo-bar-42</small>
+                    <span 
+                    class="glyphicon glyphicon-ok form-control-feedback"
+                    ng-if="s.check.username"
+                    ></span>
+                </div>
+                <div class="form-group has-success has-feedback">
+                    <label for="pswd1" >Mot de passe</label>
+                    <input 
+                        required
+                        type="password" 
+                        name="pswd1" 
+                        class="form-control" 
+                        ng-model="s.user.password" 
+                        ng-change="s.checkPswd(s.user.password, s.pswd.value)"
+                        value="{{ s.user.password }}">
+                    <small>4 chars min</small>
+                    <span 
+                    class="glyphicon glyphicon-ok form-control-feedback"
+                    ng-if="s.check.pswd1"
+                    ></span>
+                </div>
+                <div class="form-group has-success has-feedback">
+                    <label for="pswd2" >Confirmation du mot de passe</label>
+                    <input 
+                        required
+                        type="password" 
+                        name="pswd2" 
+                        class="form-control" 
+                        ng-model="s.pswd.value"
+                        ng-change="s.checkPswd(s.user.password, s.pswd.value)"
+                        value="{{ s.pswd.value}}">
+                    <span 
+                    class="glyphicon glyphicon-ok form-control-feedback"
+                    ng-if="s.check.pswd2"
+                    ></span>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-success" ng-click="s.addUser()">VALIDER</button>
+                    <button class="btn btn-danger" ng-click="s.cancel()">ANNULER</button>
+                    <img src="img/load.gif" class="ce-load" ng-if="s.loadIcon" alt="">
+                </div>
+                
+                <div class="alert alert-danger" ng-if="s.error">{{ s.error }}</div>
+                <div class="alert alert-info" ng-if="s.message">{{ s.message }}</div>
+            </form>
+            <a href="/?#!/login" class="form-group">LOGIN</a>
+        </div>
+    </div>
+</main>

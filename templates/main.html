@@ -1,1 +1,227 @@
-<h1>Main page</h1>
+<main>
+<!-- Covered by the controller SideListCtrl -->
+    <div 
+        id="ui"
+        class="panel panel-default">
+        <div 
+            class="panel-body" 
+            ng-controller="SidePanelCtrl as s">
+            <div>
+            <h3 class="ce-h3">CITIZEN ENGAGEMENT</h3>
+            <a class="pull-right" href="#" ng-click="s.openHelpModal()">
+                <span class="glyphicon glyphicon-question-sign glyphicon-lg black"></span>
+            </a>
+            </div>
+                <div class="form-group">
+                    <input 
+                        ng-model="issuesFilter"
+                        type="text">
+                    <!--<button 
+                        class="btn btn-link"
+                        ng-click="s.issuesSearch()">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>-->
+                </div>
+                
+                <div class="row form-group" ng-init="s.init()">  
+                    <div id="state-check"
+                        class="col-md-5">
+                        <div
+                            ng-repeat="state in s.issuesStates">       
+                            <div class="material-switch">
+                                <input 
+                                    ng-model="state.checked" 
+                                    id="{{state.name}}" 
+                                    value="{{state.name}}" 
+                                    ng-checked="state.checked" 
+                                    type="checkbox"/>
+                                <label for="{{state.name}}" class="label-default"></label>
+                                {{state.label}}
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div id="type-check"
+                        class="col-md-7 ">
+                        <div
+                            ng-repeat="type in s.issuesTypes">       
+                            <div class="material-switch">
+                                <input 
+                                    ng-model="type.checked"
+                                    id="{{type.name}}" 
+                                    value="{{type.name}}" 
+                                    ng-checked="type.checked"
+                                    type="checkbox"/>
+                                <label for="{{type.name}}" class="label-default"></label>
+                                {{type.description}}
+                            </div>
+                        </div> 
+                    </div>
+                </div>    
+            <div>   
+                <span class="ce-nbre-result">Nombre de résultats: {{ s.issuesNumber }}</span>
+            </div>
+        <!-- ISSUE DETAIL -->
+            <div 
+                ng-if="s.active" 
+                class="issue-detail">
+                <hr>
+                <h3>Issue detail</h3>
+                <div class="label label-default">{{d.state}}</div>
+                <img
+                    ng-if="s.issueActive.imageUrl" 
+                    src="{{s.issueActive.imageUrl}}" class="img-primary" alt="">
+                <div 
+                    class="additonal-images"
+                    ng-if="s.issueActive.additionalImageUrls.length != 0">
+                    <img
+                        ng-repeat="addImages in s.issueActive.additionalImageUrls"
+                        src="{{addImmages}}" alt=""> 
+                </div>
+                <h4>Type</h4>
+                <p>{{s.issueActive.issueType.description}}</p>
+                <h4>Description</h4>
+                <p>{{s.issueActive.description}}</p>
+                <h4>Meta</h4>
+                <p>ID: {{s.issueActive.id}}<br>
+                    Created by: {{s.issueActive.creator.firstname}} 
+                        {{s.issueActive.creator.lastname}} 
+                        ({{s.issueActive.creator.roles.join(", ")}})<br>
+                    Created at: {{s.issueActive.createdAt | date:'d.MM.yyyy' }}<br>
+                    Updated at: {{s.issueActive.updatedAt | date:'d.MM.yyyy' }}<br>
+                    Tags: {{s.issueActive.tags.join(", ")}}</p>
+                <hr>
+                <div class="new-comment">
+                    <h3>New comment</h3><br>
+                    <textarea 
+                        ng-model="s.newComment.text"
+                        class="form-control form-group"></textarea>
+                    <button 
+                        class="btn btn-default"
+                        ng-click="s.sendNewComment()">Send</button>
+                </div>
+                <h3>Comments</h3>
+                <div class="comments" ng-if="s.commentsNumber > 0">
+                    <p>{{s.commentsNumber}} comments</p>
+                    <div
+                        ng-repeat="c in s.comments"> 
+                        <div>
+                            <small>{{c.createdAt | date:'d.MM.yyyy HH:mm' }} | 
+                                    {{c.author.firstname}} {{c.author.lastname}}
+                            </small><br>
+                            {{c.text}}
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+                <div class="comments" ng-if="s.commentsNumber == 0">
+                    No comment, be the first
+                </div>
+            </div>
+        </div>
+        <!-- NEW ISSUE -->
+        <!-- Start of NewIssueCtrl -->
+        <div 
+            id="new-issue"
+            ng-controller="NewIssueCtrl as n">
+            <div
+            ng-if="n.active">
+                <hr>
+                <h3>New issue</h3>
+                <div class="form-group">
+                    <div dropzone>
+                    You'll be able to add pictures here soon...</div>
+                </div>
+                <div class="form-group">
+                    <label>Coordinates:</label>
+                    <p>Longitude: {{n.data.point.lng | number: 4}}<br>
+                       Latitude: {{n.data.point.lat | number: 4}}</p>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea 
+                        class="form-control" 
+                        rows="5" 
+                        name="description" 
+                        ng-model="n.data.description" 
+                        placeholder="Description...">
+                    </textarea>
+                </div>
+                <div class="form-group">
+                    <label for="type">Type of issue:</label>
+                    <select 
+                        name="type" 
+                        class="form-control"
+                        ng-model="n.data.type">
+                        <option ng-repeat="type in n.issuesTypes" value="{{ type.id }}">{{ type.description }}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="tags">Tags: </label>
+                    <input 
+                        type="text" 
+                        name="tags"
+                        class="form-control"
+                        ng-model="n.data.tags"
+                        value="">
+                </div>
+                <div class="form-group">
+                    <button 
+                        type="submit" 
+                        class="btn btn-default" 
+                        ng-click="n.addIssue()">
+                    Submit</button>
+                    <button 
+                        type="button" 
+                        class="btn btn-default" 
+                        ng-click="n.close()">
+                    Cancel</button>
+                </div>
+            </div>
+        </div> 
+        <!-- End of NewIssueCtrl -->     
+    </div>
+
+    <div
+        id="ce-btn-group"
+        class="btn-group-vertical">
+        <button 
+            type="button" 
+            class="btn btn-add"
+            ng-controller="ToggleCtrl as t"
+            ng-click="t.activeMode()">
+            <img ng-if="t.active == false" src="img/add.svg">
+            <img ng-if="t.active == true" src="img/marker3_black.svg" alt="" width="70%" height="70%">
+        </button>
+        <!-- Start of LogoutCtrl --> 
+        <button 
+            class="btn btn-default"
+            ng-controller="LogoutCtrl as l"
+            ng-click="l.disconnect()">
+        LOGOUT</button>
+        <!-- End of LogoutCtrl -->
+    </div>
+
+
+
+
+
+    <!-- Start of MapCtrl -->
+    <div 
+    id="map"
+    ng-controller="MapCtrl as m"        
+    ng-class="{cursor : m.cursor}">
+        <leaflet 
+            lf-center="m.center" 
+            bounds="m.bounds"
+            defaults="m.defaults" 
+            markers="m.markers"
+            paths="m.polyline"
+            layers="m.layers"
+            width="100%" 
+            height="100vh">
+        </leaflet>
+       <!-- <div class="ce-debug-div" >{{ m.boundCircle }}</div>-->
+    </div>
+    <!-- End of MapCtrl -->    
+</main>

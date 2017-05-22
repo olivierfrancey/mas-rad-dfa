@@ -1,0 +1,42 @@
+<main class="container">
+  <div class="row ce-login">
+    <div class="col-md-6">
+      <div class="ce-svg-white"></div>
+    </div>
+    <div class="col-md-4">
+      <h1>LOGIN</h1>
+      <form>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input 
+            required 
+            type="text" 
+            id="username" 
+            class="form-control" 
+            ng-model="l.user.name"
+            value="{{ l.user.name }}">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input 
+            required 
+            type="password" 
+            class="form-control" 
+            id="password" 
+            ng-model="l.user.password"
+            value="{{ l.user.password }}">
+        </div>
+        <div class="form-group">
+          <button class="btn btn-success" ng-click="l.connect()">LOGIN</button>
+          <button class="btn btn-danger" ng-click="l.cancel()">ANNULER</button> 
+          <img src="img/loading-circles-white.svg" class="ce-sm-loader" ng-if="l.loadIcon" alt="">
+        </div>
+        <div class="alert alert-danger" ng-if="l.error">
+          {{ l.error }}
+        </div>
+      </form>
+      <a href="/?#!/newuser" class="form-group">S'enregistrer</a>
+    </div> 
+  </div>
+</main>
+

@@ -1,0 +1,371 @@
+
+
+/* Tag */
+
+body {
+    background-color: #262323;
+    /*color: white;*/
+    margin: 30px;
+}
+
+main {
+    z-index:-2;
+}
+
+h3 {
+    color: black;
+    display: inline-block;
+}
+
+/* ID */
+
+#ce-btn-group {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    width: 90px;
+}
+
+#map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    z-index: -1;
+    cursor: url("../img/marker3.svg") !important;
+}
+
+#ui {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 400px;
+    max-height: 100vh;
+}
+
+#type-check {
+    float: left;
+}
+
+/*#issue-detail {
+    position: absolute;
+    border: 3px solid black;
+    visibility: visible;
+    z-index: 100;
+}*/
+
+#new-issue {
+    padding: 0 15px;
+}
+
+/* Class */
+
+.issue-detail {
+    height: 800px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.img-primary {
+    width: 337px;
+    height: auto;
+}
+
+/********* Bootstrap **********/
+.active {
+    background-color: black;
+    color: white;
+}
+
+.black {
+    color: black;
+}
+
+.btn {
+    border-radius: 0;
+}
+
+.btn-default {
+    border-radius: 0;
+}
+
+.btn-add {       /*Customised button bootstrap-like*/
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    font-size: 24px;
+    line-height: 1.33;
+    background-color: black;
+}
+
+.btn-group-vertical>.btn {
+    border-radius: 0;
+}
+
+.form-control {
+    border-radius: 0 !important;
+}
+
+.glyphicon-lg {
+    font-size: 1.5em;
+}
+
+.label-default {
+    background-color: black;
+    border-radius: 0;
+    padding: 3px 5px;
+}
+
+.issue-detail .label-default {
+    size: 1.5em;
+    position: relative;
+    top: -5px;
+    left: 10px;
+}
+
+.list-group-item.active, a.list-group-item.active:hover {
+    background-color: black !important;
+}
+
+.list-group-item:first-child, .list-group-item:last-child{
+    border-radius: 0;
+}
+
+.panel {
+    /*border: 7px solid black;*/
+    border-radius: 0;
+}
+
+.new-comment textarea {
+    width: 337px;
+    height: 100px;
+}
+
+.edit-comment textarea {
+    width: 337px;
+    height: 100px;
+}
+
+.add-image > img {
+    margin: 6px;
+    width: 100px;
+    height: auto;
+}
+
+/********* Tooltips *********/
+
+/*.popover-content {
+    width: 33%;
+}
+._exradicated-tooltip {
+    width: 33%;
+}*/
+
+/********* Leaflet **********/
+.leaflet-popup-content-wrapper {
+    border: 5px solid black;
+    padding: 0;
+    border-radius: 0;
+}
+
+
+.leaflet-popup-tip {
+    background-color: black;
+}
+
+.leaflet-popup-close-button {
+    margin: 2px;
+}
+
+.leaflet-control-layers {
+    visibility: hidden;
+}
+
+
+/********* Citizen engagement **********/
+.ce-h3 {
+    margin: 2px 0 12px 0;
+    padding: 0;
+}
+
+.ce-dropdown {
+    width: 100%;
+}
+
+.search-bar {
+    margin-bottom: 15px;
+}
+
+.ce-button {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
+div[dropzone] {
+    border: 1px dashed #bbb;
+    border-radius: 3px;
+    padding: 25px;
+    text-align: center;
+    /*font: 20pt;*/
+    color: #bbb;
+    margin-bottom: 20px;
+    /*cursor: pointer;*/
+}
+
+.ce-nbre-result {
+    padding-top: 7px;
+}
+
+.ce-sm-loader {
+    width: 27px;
+    height: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+
+    -webkit-animation:spin 1.5s linear infinite;
+    -moz-animation:spin 1.5s linear infinite;
+    animation:spin 1.5s linear infinite;
+}
+
+.ce-main-load {
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /*margin:-60px 0 0 -60px;*/
+    -webkit-animation:spin 5s linear infinite;
+    -moz-animation:spin 5s linear infinite;
+    animation:spin 5s linear infinite;
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(-360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(-360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); } }
+
+.ce-main-load path {
+    fill: silver;
+}
+
+.ce-img-popover {
+    width: 150px;
+    height: auto;
+    float: right;
+    filter: grayscale(100%);
+}
+
+.ce-login {
+    color: white;
+}
+
+.ce-reload-icon {
+    color: black;
+    float: right;
+}
+
+.ce-debug-div {
+    position: absolute;
+    bottom: 50px;
+    left: 460px;
+    z-index: 100;
+    color: red;
+    background-color: white;
+}
+
+/* COLORS */
+
+.ce-svg-white {
+    height: 700px;
+    background-color: white;
+    -webkit-mask: url(../img/marker3_black.svg) no-repeat;
+    mask: url(../img/marker3_black.svg) no-repeat;
+}
+
+.ce-svg-green {
+    height: 800px;
+    background-color: green;
+    -webkit-mask: url(../img/marker2.svg) no-repeat;
+    mask: url(../img/marker2.svg) no-repeat;
+}
+
+.angular-leaflet-map {
+    /*cursor: url(../img/marker3.svg);*/
+    width: 75%;
+}
+
+
+
+
+.material-switch > input[type="checkbox"] {
+    display: none;   
+}
+
+.material-switch > label {
+    cursor: pointer;
+    height: 0px;
+    position: relative; 
+    width: 40px;  
+}
+
+.material-switch > label::before {
+    /*background: rgb(0, 0, 0);*/
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    content: '';
+    height: 16px;
+    margin-top: -8px;
+    position:absolute;
+    opacity: 0.3;
+    transition: all 0.4s ease-in-out;
+    width: 28px;
+}
+.material-switch > label::after {
+    background: rgb(255, 255, 255);
+    border-radius: 9px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    content: '';
+    height: 12px;
+    left: 6px;
+    margin-top: -8px;
+    position: absolute;
+    top: 5px;
+    transition: all 0.3s ease-in-out;
+    width: 12px;
+}
+.material-switch > input[type="checkbox"]:checked + label::before {
+    background: inherit;
+    opacity: 0.5;
+}
+.material-switch > input[type="checkbox"]:checked + label::after {
+    background: inherit;
+    left: 20px;
+}
+
+.material-switch > .label-default {
+    background-color: white;
+}
+
+.search-bar[type=text] {
+    width: 28px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    font-size: 14px;
+    background-color: white;
+    background-image: url('../img/searchicon.png');
+    background-size: 14px 14px;
+    background-position: 6px 6px; 
+    background-repeat: no-repeat;
+    padding: 3px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+.search-bar[type=text]:focus {
+    width: 100%;
+    background-image: none;
+}
